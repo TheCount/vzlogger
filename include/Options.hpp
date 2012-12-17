@@ -31,7 +31,7 @@ public:
 	operator double() const;
 	operator bool() const;
 
-	const type_t type() const { return _type; }
+	type_t type() const { return _type; }
 
 	const std::string toString() const {
 		std::ostringstream oss;
@@ -79,9 +79,9 @@ public:
 
 	const Option& lookup(std::list<Option> options, const std::string &key);
 	const char  *lookup_string(std::list<Option> options, const char *key);
-	const int    lookup_int(std::list<Option> options, const char *key);
-	const bool   lookup_bool(std::list<Option> options, const char *key);
-	const double lookup_double(std::list<Option> options, const char *key);
+	int    lookup_int(std::list<Option> options, const char *key);
+	bool   lookup_bool(std::list<Option> options, const char *key);
+	double lookup_double(std::list<Option> options, const char *key);
 
 	void dump(std::list<Option> options);
 

@@ -137,19 +137,19 @@ const char *OptionList::lookup_string(std::list<Option> options, const char *key
 	return (const char*)opt;
 }
 
-const int OptionList::lookup_int(std::list<Option> options, const char *key)
+int OptionList::lookup_int(std::list<Option> options, const char *key)
 {
 	Option opt = lookup(options, key);
 	return (int)opt;
 }
 
-const bool OptionList::lookup_bool(std::list<Option> options, const char *key)
+bool OptionList::lookup_bool(std::list<Option> options, const char *key)
 {
 	Option opt = lookup(options, key);
 	return (bool)opt;
 }
 
-const double OptionList::lookup_double(std::list<Option> options, const char *key)
+double OptionList::lookup_double(std::list<Option> options, const char *key)
 {
 	Option opt = lookup(options, key);
 	return (double)opt;

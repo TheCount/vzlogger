@@ -144,14 +144,14 @@ public:
 	Reading(double pValue, struct timeval pTime, ReadingIdentifier::Ptr pIndentifier);
 	Reading(const Reading &orig);
 
-	const bool deleted() const { return _deleted; }
+	bool deleted() const { return _deleted; }
 	void  mark_delete()        { _deleted = true; }
 	void  reset()              { _deleted = false; }
 
 	void value(const double &v) { _value = v; }
-	const double value() const  { return _value; }
+	double value() const  { return _value; }
 
-	const  double tvtod() const;
+	double tvtod() const;
 	double tvtod(struct timeval tv);
 	void time() { gettimeofday(&_time, NULL); }
 	void time(struct timeval &v) { _time = v; }
