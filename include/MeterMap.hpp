@@ -34,8 +34,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _MeterMap_hpp_
-#define _MeterMap_hpp_
+#ifndef VZ_MeterMap_hpp_
+#define VZ_MeterMap_hpp_
 #include <pthread.h>
 #include <vector>
 
@@ -128,4 +128,4 @@ private:
 	std::vector<MeterMap> _mappings;
 
 };
-#endif /* _MeterMap_hpp_ */
+#endif /* VZ_MeterMap_hpp_ */

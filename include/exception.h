@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _EXCEPTION_H_
-#define _EXCEPTION_H_
+#ifndef VZ_EXCEPTION_H_
+#define VZ_EXCEPTION_H_
 
 class Exception {
 
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif /* _EXCEPTION_H_ */
+#endif /* VZ_EXCEPTION_H_ */

@@ -1,5 +1,5 @@
-#ifndef _Json_hpp_
-#define _Json_hpp_
+#ifndef VZ_Json_hpp_
+#define VZ_Json_hpp_
 
 #include <json/json.h>
 #include <shared_ptr.hpp>
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif /* _Json_hpp_ */
+#endif /* VZ_Json_hpp_ */

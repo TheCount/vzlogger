@@ -30,8 +30,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _Volkszaehler_hpp_
-#define _Volkszaehler_hpp_
+#ifndef VZ_Volkszaehler_hpp_
+#define VZ_Volkszaehler_hpp_
 
 #include <stdint.h>
 #include <curl/curl.h>
@@ -105,4 +105,4 @@ namespace vz {
 
 	} // namespace api
 } // namespace vz
-#endif /* _Volkszaehler_hpp_ */
+#endif /* VZ_Volkszaehler_hpp_ */

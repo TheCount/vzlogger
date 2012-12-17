@@ -30,8 +30,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _MySmartGrid_hpp_
-#define _MySmartGrid_hpp_
+#ifndef VZ_MySmartGrid_hpp_
+#define VZ_MySmartGrid_hpp_
 
 #include <ApiIF.hpp>
 #include <Options.hpp>
@@ -118,4 +118,4 @@ namespace vz {
 	
 	} // namespace api
 } // namespace vz
-#endif /* _MySmartGrid_hpp_ */
+#endif /* VZ_MySmartGrid_hpp_ */

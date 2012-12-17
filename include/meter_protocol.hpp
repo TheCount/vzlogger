@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _meter_protocol_hpp_
-#define _meter_protocol_hpp_
+#ifndef VZ_meter_protocol_hpp_
+#define VZ_meter_protocol_hpp_
 
 typedef enum meter_procotol {
 	meter_protocol_none = 0,
@@ -36,4 +36,4 @@ typedef enum meter_procotol {
 	meter_protocol_sml,
 	meter_protocol_fluksov2
 } meter_protocol_t;
-#endif /* _meter_protocol_hpp_ */
+#endif /* VZ_meter_protocol_hpp_ */

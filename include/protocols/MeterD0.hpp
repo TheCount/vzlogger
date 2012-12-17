@@ -26,8 +26,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _D0_H_
-#define _D0_H_
+#ifndef VZ_D0_H_
+#define VZ_D0_H_
 
 #define D0_BUFFER_LENGTH 1024
 
@@ -68,4 +68,4 @@ private:
 
 int meter_d0_open_device(const char *device, struct termios *old_tio, speed_t baudrate);
 
-#endif /* _D0_H_ */
+#endif /* VZ_D0_H_ */

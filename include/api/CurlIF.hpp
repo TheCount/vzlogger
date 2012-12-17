@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CurlIF_hpp_
-#define _CurlIF_hpp_
+#ifndef VZ_CurlIF_hpp_
+#define VZ_CurlIF_hpp_
 
 #include <string>
 
@@ -53,4 +53,4 @@ namespace vz {
       
 	} // namespace vz
 } // namespace vz
-#endif /* _CurlIF_hpp_ */
+#endif /* VZ_CurlIF_hpp_ */

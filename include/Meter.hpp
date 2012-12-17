@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _METER_H_
-#define _METER_H_
+#ifndef VZ_METER_H_
+#define VZ_METER_H_
 #include <list>
 #include <vector>
 
@@ -97,4 +97,4 @@ int meter_lookup_protocol(const char* name, meter_protocol_t *protocol);
 const meter_details_t * meter_get_protocols();
 const meter_details_t * meter_get_details(meter_protocol_t protocol);
 
-#endif /* _METER_H_ */
+#endif /* VZ_METER_H_ */

@@ -25,8 +25,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _BUFFER_H_
-#define _BUFFER_H_
+#ifndef VZ_BUFFER_H_
+#define VZ_BUFFER_H_
 
 #include <pthread.h>
 #include <sys/time.h>
@@ -76,7 +76,7 @@ class Buffer {
 	pthread_mutex_t _mutex;
 };
 
-#endif /* _BUFFER_H_ */
+#endif /* VZ_BUFFER_H_ */
 
 
 /*

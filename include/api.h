@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _API_H_
-#define _API_H_
+#ifndef VZ_API_H_
+#define VZ_API_H_
 
 #include <stddef.h>
 #include <curl/curl.h>
@@ -82,4 +82,4 @@ json_object * api_json_tuples(Buffer::Ptr buf);
  */
 int api_parse_exception(CURLresponse response, char *err, size_t n);
 
-#endif /* _API_H_ */
+#endif /* VZ_API_H_ */

@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _VZLOGGER_H_
-#define _VZLOGGER_H_
+#ifndef VZ_VZLOGGER_H_
+#define VZ_VZLOGGER_H_
 
 #include <pthread.h>
 #include <vector>
@@ -46,4 +46,4 @@ int options_parse(int argc, char *argv[], Config_Options *options);
 
 void register_device();
 
-#endif /* _VZLOGGER_H_ */
+#endif /* VZ_VZLOGGER_H_ */

@@ -30,8 +30,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _VZException_hpp_
-#define _VZException_hpp_
+#ifndef VZ_VZException_hpp_
+#define VZ_VZException_hpp_
 #include <string>
 #include <exception>
 
@@ -90,7 +90,7 @@ namespace vz {
 	} // namespace connection 
 
 } // namespace vz
-#endif /* _VZException_hpp_ */
+#endif /* VZ_VZException_hpp_ */
 
 /*
  * Local variables:

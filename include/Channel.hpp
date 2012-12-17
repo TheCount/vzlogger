@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CHANNEL_H_
-#define _CHANNEL_H_
+#ifndef VZ_CHANNEL_H_
+#define VZ_CHANNEL_H_
 
 #include <iostream>
 #include <pthread.h>
@@ -109,4 +109,4 @@ class Channel {
 	std::string _apiProtocol;  /**< protocol of api to use for logging */
 };
 
-#endif /* _CHANNEL_H_ */
+#endif /* VZ_CHANNEL_H_ */

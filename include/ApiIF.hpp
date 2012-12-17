@@ -30,8 +30,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ApiIF_hpp_
-#define _ApiIF_hpp_
+#ifndef VZ_ApiIF_hpp_
+#define VZ_ApiIF_hpp_
 
 #include <string>
 
@@ -61,4 +61,4 @@ namespace vz {
 	}; //class ApiIF
 
 } // namespace vz
-#endif /* _ApiIF_hpp_ */
+#endif /* VZ_ApiIF_hpp_ */

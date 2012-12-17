@@ -23,12 +23,12 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _THREADS_H_
-#define _THREADS_H_
+#ifndef VZ_THREADS_H_
+#define VZ_THREADS_H_
 
 void logging_thread_cleanup(void *arg);
 
 void * logging_thread(void *arg);
 void * reading_thread(void *arg);
 
-#endif /* _THREADS_H_ */
+#endif /* VZ_THREADS_H_ */

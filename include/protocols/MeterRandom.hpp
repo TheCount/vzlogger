@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _RANDOM_H_
-#define _RANDOM_H_
+#ifndef VZ_RANDOM_H_
+#define VZ_RANDOM_H_
 
 #include <protocols/Protocol.hpp>
 
@@ -46,4 +46,4 @@ protected:
 	double _last;
 };
 
-#endif /* _RANDOM_H_ */
+#endif /* VZ_RANDOM_H_ */

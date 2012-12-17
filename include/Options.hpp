@@ -1,5 +1,5 @@
-#ifndef _OPTIONS_H_
-#define _OPTIONS_H_
+#ifndef VZ_OPTIONS_H_
+#define VZ_OPTIONS_H_
 
 #include <sstream>
 #include <iostream>
@@ -91,4 +91,4 @@ protected:
 
 };
 
-#endif /* _OPTIONS_H_ */
+#endif /* VZ_OPTIONS_H_ */

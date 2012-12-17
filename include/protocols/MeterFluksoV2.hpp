@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _FLUKSOV2_H_
-#define _FLUKSOV2_H_
+#ifndef VZ_FLUKSOV2_H_
+#define VZ_FLUKSOV2_H_
 
 #include <protocols/Protocol.hpp>
 
@@ -49,4 +49,4 @@ public:
 	const char *_DEFAULT_FIFO;
 };
 
-#endif /* _FLUKSOV2_H_ */
+#endif /* VZ_FLUKSOV2_H_ */

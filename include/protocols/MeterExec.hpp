@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _EXEC_H_
-#define _EXEC_H_
+#ifndef VZ_EXEC_H_
+#define VZ_EXEC_H_
 
 #include <protocols/Protocol.hpp>
 
@@ -43,4 +43,4 @@ public:
 	const char *_format;
 };
 
-#endif /* _EXEC_H_ */
+#endif /* VZ_EXEC_H_ */

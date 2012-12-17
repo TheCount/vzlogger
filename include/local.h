@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _LOCAL_H_
-#define _LOCAL_H_
+#ifndef VZ_LOCAL_H_
+#define VZ_LOCAL_H_
 
 #include <stdint.h>	/* required for libMHD */
 #include <stdarg.h>	/* required for libMHD */
@@ -43,6 +43,6 @@ int handle_request(
 	void **con_cls
 );
 
-#endif /* _LOCAL_H_ */
+#endif /* VZ_LOCAL_H_ */
 
 

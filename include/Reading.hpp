@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _READING_H_
-#define _READING_H_
+#ifndef VZ_READING_H_
+#define VZ_READING_H_
 
 #include <string>
 #include <sstream>
@@ -184,4 +184,4 @@ protected:
 ReadingIdentifier::Ptr reading_id_parse(meter_protocol_t protocol, const char *string);
 
 
-#endif /* _READING_H_ */
+#endif /* VZ_READING_H_ */

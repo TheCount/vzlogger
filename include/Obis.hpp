@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 	
-#ifndef _OBIS_H_
-#define _OBIS_H_
+#ifndef VZ_OBIS_H_
+#define VZ_OBIS_H_
 
 #include <string>
 
@@ -70,4 +70,4 @@ typedef struct {
 
 obis_alias_t * obis_get_aliases();
 
-#endif /* _OBIS_H_ */
+#endif /* VZ_OBIS_H_ */

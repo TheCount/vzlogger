@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CurlCallback_hpp_
-#define _CurlCallback_hpp_
+#ifndef VZ_CurlCallback_hpp_
+#define VZ_CurlCallback_hpp_
 #include <string.h>
 #include <curl/curl.h>
 
@@ -44,7 +44,7 @@ namespace vz {
       
 	} // namespace vz
 } // namespace vz
-#endif /* _CurlCallback_hpp_ */
+#endif /* VZ_CurlCallback_hpp_ */
 
 /*
  * Local variables:

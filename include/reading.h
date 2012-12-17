@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _READING_H_
-#define _READING_H_
+#ifndef VZ_READING_H_
+#define VZ_READING_H_
 
 #include <sys/time.h>
 
@@ -98,4 +98,4 @@ double tvtod(struct timeval tv);
  */
 struct timeval dtotv(double ts);
 
-#endif /* _READING_H_ */
+#endif /* VZ_READING_H_ */

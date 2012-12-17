@@ -1,5 +1,5 @@
-#ifndef _COMMON_H_
-#define _COMMON_H_
+#ifndef VZ_COMMON_H_
+#define VZ_COMMON_H_
 
 #include <stdarg.h>
 #include <string.h>
@@ -36,4 +36,4 @@ typedef enum {
 /* prototypes */
 void print(log_level_t lvl, const char *format, const char *id, ... );
 
-#endif /* _COMMON_H_ */
+#endif /* VZ_COMMON_H_ */

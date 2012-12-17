@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _S0_H_
-#define _S0_H_
+#ifndef VZ_S0_H_
+#define VZ_S0_H_
 
 #include <termios.h>
 
@@ -53,4 +53,4 @@ public:
 	struct termios _old_tio;	/* required to reset port */
 };
 
-#endif /* _S0_H_ */
+#endif /* VZ_S0_H_ */

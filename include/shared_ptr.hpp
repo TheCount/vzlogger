@@ -30,8 +30,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _shared_ptr_hpp_
-#define _shared_ptr_hpp_
+#ifndef VZ_shared_ptr_hpp_
+#define VZ_shared_ptr_hpp_
 
 #include <tr1/memory>
 
@@ -40,4 +40,4 @@ namespace vz {
 	using ::std::tr1::enable_shared_from_this;
 }
 
-#endif /* _shared_ptr_hpp_ */
+#endif /* VZ_shared_ptr_hpp_ */

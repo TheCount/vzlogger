@@ -27,8 +27,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _SML_H_
-#define _SML_H_
+#ifndef VZ_SML_H_
+#define VZ_SML_H_
 
 #include <sml/sml_file.h>
 #include <sml/sml_value.h>
@@ -93,4 +93,4 @@ protected:
 };
 
 
-#endif /* _SML_H_ */
+#endif /* VZ_SML_H_ */

@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CurlResponse_hpp_
-#define _CurlResponse_hpp_
+#ifndef VZ_CurlResponse_hpp_
+#define VZ_CurlResponse_hpp_
 
 #include <shared_ptr.hpp>
 #include <curl/curl.h>
@@ -65,7 +65,7 @@ namespace vz {
     
 	} // namespace vz
 } // namespace vz
-#endif /* _CurlResponse_hpp_ */
+#endif /* VZ_CurlResponse_hpp_ */
 
 
 /*

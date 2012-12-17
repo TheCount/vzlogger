@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef VZ_CONFIG_H_
+#define VZ_CONFIG_H_
 
 #include <list>
 #include <vector>
@@ -129,4 +129,4 @@ private:
 int config_validate_uuid(const char *uuid);
 
 
-#endif /* _CONFIG_H_ */
+#endif /* VZ_CONFIG_H_ */

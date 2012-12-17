@@ -25,8 +25,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _protocol_hpp_
-#define _protocol_hpp_
+#ifndef VZ_protocol_hpp_
+#define VZ_protocol_hpp_
 
 #include <vector>
 #include <list>
@@ -59,4 +59,4 @@ namespace vz {
 	} // namespace protocol
 } // namespace vz
 
-#endif /* _protocol_hpp_ */
+#endif /* VZ_protocol_hpp_ */

@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _LIST_H_
-#define _LIST_H_
+#ifndef VZ_LIST_H_
+#define VZ_LIST_H_
 
 #include "exception.h"
 
@@ -127,4 +127,4 @@ protected:
 	Node *cur;
 };
 
-#endif /* _LIST_H_ */
+#endif /* VZ_LIST_H_ */

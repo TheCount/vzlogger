@@ -23,8 +23,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _FILE_H_
-#define _FILE_H_
+#ifndef VZ_FILE_H_
+#define VZ_FILE_H_
 
 #include <protocols/Protocol.hpp>
 
@@ -49,4 +49,4 @@ public:
 	FILE *_fd;
 };
 
-#endif /* _FILE_H_ */
+#endif /* VZ_FILE_H_ */
