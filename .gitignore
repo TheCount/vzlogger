@@ -18,7 +18,11 @@
 *.a
 
 # automake
+aclocal.m4
+config.h.in
+configure
 Makefile
+Makefile.in
 .deps
 
 # autoconf
@@ -33,3 +37,5 @@ stamp-h1
 
 # Debian packaging
 /debian/config.log
+/debian/files
+/debian/vzlogger*
