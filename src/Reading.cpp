@@ -102,7 +102,7 @@ ReadingIdentifier::Ptr reading_id_parse(meter_protocol_t protocol, const char *s
 				char type[13];
 				int channel;
 
-				int ret = sscanf(string, "sensor%u/%12s", &channel, type);
+				int ret = sscanf(string, "sensor%d/%12s", &channel, type);
 				if (ret != 2) {
 					throw vz::VZException("meter-fluksov4 failed");
 				}
@@ -226,7 +226,7 @@ bool ChannelIdentifier::operator==(ChannelIdentifier &cmp) {
 void ChannelIdentifier::parse(const char *string) {
 	char type[13];
 	int channel;
-	int ret = sscanf(string, "sensor%u/%12s", &channel, type);
+	int ret = sscanf(string, "sensor%d/%12s", &channel, type);
 
 	if (ret != 2) {
 		throw vz::VZException("Failed to parse channel identifier");
