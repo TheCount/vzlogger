@@ -21,3 +21,11 @@ Description: program for logging measurements to a volkszaehler.org middleware
   * is written in ISO C++ and should run on most embedded devices
     which conform to the POSIX standard.
 
+Package: vzlogger-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: vzlogger (= ${binary:Version}), ${misc:Depends}
+Description: Debugging symbols for vzlogger
+ This package contains the debugging symbols for vzlogger.
+
