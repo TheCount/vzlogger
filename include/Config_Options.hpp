@@ -101,12 +101,12 @@ private:
 	int _retry_pause;	/* in seconds; how long to pause after an unsuccessful HTTP request */
 
 	/* boolean bitfields, padding at the end of struct */
-	int _channel_index:1;	/* give a index of all available channels via local interface */
-	int _daemon:1;		/* run in background */
-	int _foreground:1;	/* dont fork in background */
-	int _local:1;		/* enable local interface */
-	int _logging:1;		/* start logging threads, depends on local & daemon */
-	int _doRegistration:1;		/* start logging threads, depends on local & daemon */
+	unsigned int _channel_index:1;	/* give a index of all available channels via local interface */
+	unsigned int _daemon:1;		/* run in background */
+	unsigned int _foreground:1;	/* dont fork in background */
+	unsigned int _local:1;		/* enable local interface */
+	unsigned int _logging:1;		/* start logging threads, depends on local & daemon */
+	unsigned int _doRegistration:1;		/* start logging threads, depends on local & daemon */
 };
 
 /**
