@@ -62,9 +62,6 @@ int handle_request(
 					"http", method, url, mode);
 
 		if (strcmp(method, "GET") == 0) {
-			struct timespec ts;
-			struct timeval tp;
-
 			struct json_object *json_obj = json_object_new_object();
 			struct json_object *json_data = json_object_new_array();
 			struct json_object *json_exception = NULL;
@@ -93,11 +90,6 @@ int handle_request(
 
 /* blocking until new data arrives (comet-like blocking of HTTP response) */
 						if (mode && strcmp(mode, "comet") == 0) {
-/* convert from timeval to timespec */
-							gettimeofday(&tp, NULL);
-							ts.tv_sec  = tp.tv_sec + options.comet_timeout();
-							ts.tv_nsec = tp.tv_usec * 1000;
-
 							(*ch)->wait();
 						}
 
