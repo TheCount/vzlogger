@@ -12,7 +12,6 @@ vzlogger_SOURCES = vzlogger.cpp Channel.cpp Config_Options.cpp threads.cpp Buffe
 vzlogger_SOURCES += Meter.cpp ltqnorm.cpp Obis.cpp Options.cpp Reading.cpp
 vzlogger_SOURCES += exception.cpp local.cpp MeterMap.cpp
 
-
 # Protocols (add your own here)
 vzlogger_SOURCES += \
 	protocols/MeterS0.cpp \
@@ -31,8 +30,8 @@ vzlogger_SOURCES += \
 	api/CurlCallback.cpp \
 	api/CurlResponse.cpp
 
-vzlogger_LDADD =
-vzlogger_LDFLAGS = -lpthread -lm -lstdc++ $(DEPS_VZ_LIBS)
+vzlogger_LDADD = $(DEPS_VZ_LIBS) -lpthread -lm -lstdc++
+vzlogger_LDFLAGS =
 
 # SML support
 ####################################################################
