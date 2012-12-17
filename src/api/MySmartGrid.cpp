@@ -168,6 +168,9 @@ void vz::api::MySmartGrid::send()
 			case chn_type_sensor:
 				json_obj = _apiSensor(channel()->buffer());
 				break;
+			default:
+				print( log_debug, "Invalid channel type '%hd'", channel()->name(), _channelType );
+				return;
 	}
 	json_str = json_object_to_json_string(json_obj);
 	if(json_str == NULL || strcmp(json_str, "null")==0) {
