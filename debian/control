@@ -11,13 +11,13 @@ Vcs-Browser: http://github.com/volkszaehler/volkszaehler.org/tree/master/misc/co
 Package: vzlogger
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, adduser
-Description: program for logging measurements to an volkszaehler.org middleware
+Description: program for logging measurements to a volkszaehler.org middleware
  vzlogger...
-  * is a tool to read and log measurements of a wide variety of smartmeters and
+  * is a tool to read and log measurements from a wide variety of smartmeters and
     sensors to the volkszaehler.org middleware.
-  * can run as a daemon or via Cron.
+  * can run as a daemon or via cron.
   * includes a tiny onboard httpd to serve
     realtime readings to the AJAX web frontend.
-  * is written in ANSI C and should run on most embedded devices
+  * is written in ISO C++ and should run on most embedded devices
     which conform to the POSIX standard.
 
