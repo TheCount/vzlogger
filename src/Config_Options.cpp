@@ -27,6 +27,9 @@
 #include <errno.h>
 #include <ctype.h>
 
+#include<fstream>
+#include<stdexcept>
+
 #include <Config_Options.hpp>
 #include "Channel.hpp"
 #include <VZException.hpp>
@@ -74,34 +77,42 @@ void Config_Options::config_parse(
 	struct json_object *json_cfg = NULL;
 	struct json_tokener *json_tok = json_tokener_new();
 
-	char buf[JSON_FILE_BUF_SIZE];
+	std::string buf;
 	int line = 0;
 
 	/* open configuration file */
-	FILE *file = fopen(_config.c_str(), "r");
-	if (file == NULL) {
-		print(log_error, "Cannot open configfile %s: %s", NULL, _config.c_str(), strerror(errno)); /* why didn't the file open? */
+	std::ifstream file;
+	file.exceptions( std::ifstream::failbit | std::ifstream::badbit );
+	try {
+		file.open( _config.c_str() );
+	} catch( const std::exception& e ) {
+		json_tokener_free( json_tok );
+		print(log_error, "Cannot open configfile %s: %s", NULL, _config.c_str(), e.what() );
 		throw vz::VZException("Cannot open configfile.");
 	}
-	else {
-		print(log_info, "Start parsing configuration from %s", NULL, _config.c_str());
-	}
+	print(log_info, "Start parsing configuration from %s", NULL, _config.c_str());
 
-	/* parse JSON */
-	while(fgets(buf, JSON_FILE_BUF_SIZE, file)) {
-		line++;
-
-		json_cfg = json_tokener_parse_ex(json_tok, buf, strlen(buf));
-
-		if (json_tok->err > 1) {
-			print(log_error, "Error in %s:%d %s at offset %d", NULL, _config.c_str(), line, json_tokener_errors[json_tok->err], json_tok->char_offset);
-			throw vz::VZException("Parse configuaration failed.");
+	try {
+		file.exceptions( std::ifstream::badbit );
+		while ( std::getline( file, buf ) ) {
+			buf.push_back( '\n' );
+			++line;
+			json_cfg = json_tokener_parse_ex( json_tok, buf.c_str(), buf.length() ); // FIXME: Check retval
+			if (json_tok->err > 1) {
+				print(log_error, "Error in %s:%d %s at offset %d", NULL, _config.c_str(), line, json_tokener_errors[json_tok->err], json_tok->char_offset);
+				throw vz::VZException("Parse configuaration failed.");
+			}
 		}
-	}
 
-	/* householding */
-	fclose(file);
-	json_tokener_free(json_tok);
+		file.clear();
+		file.exceptions( std::ifstream::failbit | std::ifstream::badbit );
+		file.close();
+	} catch ( const std::exception& e ) {
+		json_tokener_free( json_tok );
+		print( log_error, "Unable to read config file %s: %s", NULL, _config.c_str(), e.what() );
+		throw vz::VZException( "Unable to read config file" );
+	}
+	json_tokener_free( json_tok );
 
 	try {
 		/* parse options */
@@ -169,9 +180,7 @@ void Config_Options::config_parse(
 	}
 
 	print(log_debug, "Have %d meters.", NULL, mappings.size());
-
-
-	//json_object_put(json_cfg); /* free allocated memory */
+	json_object_put(json_cfg); /* free allocated memory */
 }
 
 void Config_Options::config_parse_meter(MapContainer &mappings, Json::Ptr jso) {
