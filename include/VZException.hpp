@@ -33,26 +33,21 @@
 #ifndef VZ_VZException_hpp_
 #define VZ_VZException_hpp_
 #include <string>
-#include <exception>
+#include<stdexcept>
 
 namespace vz {
-	class VZException : public std::exception {
+	class VZException : public std::runtime_error {
 	public:
 		explicit
-		VZException(const std::string& reason) :
-				_reason(reason) {}
+		VZException(const std::string& reason) noexcept : std::runtime_error( reason ) {}
 		virtual ~VZException() throw() {}
-		virtual const char* what() const throw() { return reason().c_str(); }
-		virtual const std::string& reason() const { return _reason; }
 
-	protected:
-		std::string _reason;
 	};
 
 	// Option invalid type
 	class InvalidTypeException : public vz::VZException{
 	public:
-		InvalidTypeException(const std::string& reason) :
+		InvalidTypeException(const std::string& reason) noexcept :
 				vz::VZException(reason) {}
 		virtual ~InvalidTypeException() throw() {}
 
@@ -62,7 +57,7 @@ namespace vz {
 	// Option item not found
 	class OptionNotFoundException : public vz::VZException{
 	public:
-		OptionNotFoundException(const std::string& reason) :
+		OptionNotFoundException(const std::string& reason) noexcept :
 				vz::VZException(reason) {}
 		virtual ~OptionNotFoundException() throw() {}
 
@@ -73,7 +68,7 @@ namespace vz {
 	// Connection failed
 	class ConnectionException : public vz::VZException{
 	public:
-		ConnectionException(const std::string& reason) :
+		ConnectionException(const std::string& reason) noexcept :
 				vz::VZException(reason) {}
 		virtual ~ConnectionException() throw() {}
 
@@ -83,7 +78,7 @@ namespace vz {
 	// Timedout
 	namespace connection {
 		class TimeOut : public ConnectionException {
-			TimeOut(const std::string& reason) : ConnectionException(reason) {}
+			TimeOut(const std::string& reason) noexcept : ConnectionException(reason) {}
 			virtual ~TimeOut() throw() {}
 		};
     
