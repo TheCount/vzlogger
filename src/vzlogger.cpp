@@ -37,6 +37,7 @@
 #include <sys/time.h>
 #include <fcntl.h>
 
+#include<chrono>
 #include <list>
 
 #include <Config_Options.hpp>
@@ -104,16 +105,16 @@ void print( LogLevel level, const char *format, const char *id, ... ) {
 		return; /* skip message if its under the verbosity level */
 	}
 
-	struct timeval now;
-	struct tm * timeinfo;
-	char prefix[24];
+	time_t now = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
+	struct tm timeinfo;
+	char prefix[32];
 	size_t pos = 0;
 
-	gettimeofday(&now, NULL);
-	timeinfo = localtime(&now.tv_sec);
-
-	/* format timestamp */
-	pos += strftime(prefix+pos, 18, "[%b %d %H:%M:%S]", timeinfo);
+	void * rp = localtime_r( &now, &timeinfo );
+	if ( rp != NULL ) {
+		/* format timestamp */
+		pos += strftime(prefix+pos, 18, "[%b %d %H:%M:%S]", &timeinfo);
+	}
 
 	/* format section */
 	if (id) {
