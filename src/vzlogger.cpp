@@ -359,9 +359,7 @@ int main(int argc, char *argv[]) {
 	try {
 		options.config_parse(mappings);
 	} catch ( std::exception &e) {
-		std::stringstream oss;
-		oss << e.what();
-		print(log_error, "Failed to parse configuration due to: ", "", oss.str().c_str());
+		print(log_error, "Failed to parse configuration due to: %s", "", e.what() );
 		return EXIT_FAILURE;
 	}
 
