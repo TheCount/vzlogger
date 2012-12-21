@@ -261,20 +261,20 @@ int vz::api::curl_custom_debug_callback(
 			case CURLINFO_TEXT:
 			case CURLINFO_END:
 				if (end) *end = '\0'; /* terminate without \n */
-				print((log_level_t)(log_debug+5), "CURL: %.*s", ch->name(), (int) size, data);
+				print( ( LogLevel ) (log_debug+5), "CURL: %.*s", ch->name(), (int) size, data);
 				break;
 
 			case CURLINFO_SSL_DATA_IN:
 			case CURLINFO_DATA_IN:
-				print((log_level_t)(log_debug+5), "CURL: Received %lu bytes", ch->name(), (unsigned long) size);
-				print((log_level_t)(log_debug+5), "CURL: Received '%s' bytes", ch->name(), data);
+				print( ( LogLevel ) (log_debug+5), "CURL: Received %lu bytes", ch->name(), (unsigned long) size);
+				print( ( LogLevel ) (log_debug+5), "CURL: Received '%s' bytes", ch->name(), data);
 				break;
 
 			case CURLINFO_SSL_DATA_OUT:
 			case CURLINFO_DATA_OUT:	
         data[size]=0;
-        print((log_level_t)(log_debug+5), "CURL: Sent %lu bytes.. ", ch->name(), (unsigned long) size);
-				print((log_level_t)(log_debug+5), "CURL: Sent '%s' bytes", ch->name(), data);
+        print( ( LogLevel ) (log_debug+5), "CURL: Sent %lu bytes.. ", ch->name(), (unsigned long) size);
+				print( ( LogLevel ) (log_debug+5), "CURL: Sent '%s' bytes", ch->name(), data);
 				break;
 
 			case CURLINFO_HEADER_IN:

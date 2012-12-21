@@ -56,28 +56,28 @@ void vz::api::CurlResponse::debug_callback(
 			case CURLINFO_TEXT:
 			case CURLINFO_END:
 				if (end) *end = '\0'; /* terminate without \n */
-				print((log_level_t)(log_debug+5), "CURL: %.*s", "CURL", (int) data_str.size(), data);
+				print( ( LogLevel ) (log_debug+5), "CURL: %.*s", "CURL", (int) data_str.size(), data);
 				break;
 
 			case CURLINFO_SSL_DATA_IN:
-				print((log_level_t)(log_debug+5), "CURL: Received %lu bytes", "CURL", (unsigned long) data_str.size());
+				print( ( LogLevel ) (log_debug+5), "CURL: Received %lu bytes", "CURL", (unsigned long) data_str.size());
 				break;
 			case CURLINFO_DATA_IN:
-				print((log_level_t)(log_debug+5), "CURL: Received %lu bytes", "CURL", (unsigned long) data_str.size());
-				print((log_level_t)(log_debug+5), "CURL: Received '%s' bytes", "CURL", data);
+				print( ( LogLevel ) (log_debug+5), "CURL: Received %lu bytes", "CURL", (unsigned long) data_str.size());
+				print( ( LogLevel ) (log_debug+5), "CURL: Received '%s' bytes", "CURL", data);
 				break;
 
 			case CURLINFO_SSL_DATA_OUT:
-				print((log_level_t)(log_debug+5), "CURL: Sent %lu bytes.. ", "CURL", (unsigned long) data_str.size());
+				print( ( LogLevel ) (log_debug+5), "CURL: Sent %lu bytes.. ", "CURL", (unsigned long) data_str.size());
 				break;
 			case CURLINFO_DATA_OUT:
-				print((log_level_t)(log_debug+5), "CURL: Sent %lu bytes.. ", "CURL", (unsigned long) data_str.size());
-				print((log_level_t)(log_debug+5), "CURL: Sent '%s' bytes", "CURL", data);
+				print( ( LogLevel ) (log_debug+5), "CURL: Sent %lu bytes.. ", "CURL", (unsigned long) data_str.size());
+				print( ( LogLevel ) (log_debug+5), "CURL: Sent '%s' bytes", "CURL", data);
 				break;
 
 			case CURLINFO_HEADER_IN:
 			case CURLINFO_HEADER_OUT:
-				print((log_level_t)(log_debug+5), "CURL: Header '%s' bytes", "CURL", data);
+				print( ( LogLevel ) (log_debug+5), "CURL: Header '%s' bytes", "CURL", data);
 				break;
 	}
 

@@ -99,7 +99,7 @@ const char *long_options_descs[] = {
  * @param id could be NULL for general messages
  * @todo integrate into syslog
  */
-void print(log_level_t level, const char *format, const char *id, ... ) {
+void print( LogLevel level, const char *format, const char *id, ... ) {
 	if (level > options.verbosity()) {
 		return; /* skip message if its under the verbosity level */
 	}

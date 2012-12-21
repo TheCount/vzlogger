@@ -25,7 +25,7 @@ typedef enum {
 	log_info = 5,
 	log_debug = 10,
 	log_finest = 15
-} log_level_t;
+} LogLevel;
 
 /* types */
 
@@ -36,6 +36,6 @@ typedef enum {
 #define ERR_INVALID_TYPE -3
 
 /* prototypes */
-void print(log_level_t lvl, const char *format, const char *id, ... ) FORMAT_CHECK( 2, 4 );
+void print( LogLevel lvl, const char *format, const char *id, ... ) FORMAT_CHECK( 2, 4 );
 
 #endif /* VZ_COMMON_H_ */
