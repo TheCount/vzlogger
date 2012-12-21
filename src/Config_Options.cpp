@@ -173,13 +173,11 @@ void Config_Options::config_parse(
 		}
 	} catch (std::exception &e ) {
 		json_object_put(json_cfg); /* free allocated memory */
-		std::stringstream oss;
-		oss << e.what();
-		print(log_error, "parse configuration failed due to:", "",  oss.str().c_str());
+		print(log_error, "parse configuration failed due to: %s", "",  e.what() );
 		throw;
 	}
 
-	print(log_debug, "Have %d meters.", NULL, mappings.size());
+	print(log_debug, "Have %zu meters.", NULL, mappings.size());
 	json_object_put(json_cfg); /* free allocated memory */
 }
 

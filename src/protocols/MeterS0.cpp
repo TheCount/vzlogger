@@ -135,7 +135,7 @@ ssize_t MeterS0::read(std::vector<Reading> &rds, size_t n) {
 	rds[2].time(time2);
 	rds[2].value(value);
 
-	print(log_debug, "Reading S0 - n=%d power=%f  counter=%f", name().c_str(), n, value, rds[2].value());
+	print(log_debug, "Reading S0 - n=%zu power=%f  counter=%f", name().c_str(), n, value, rds[2].value());
 	/* wait some ms for debouncing */
 	usleep(30000);
 

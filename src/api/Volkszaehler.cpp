@@ -28,6 +28,8 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include<cinttypes>
+
 #include <stddef.h>
 #include <curl/curl.h>
 #include <json/json.h>
@@ -131,7 +133,7 @@ void vz::api::Volkszaehler::send()
 
 	/* check response */
 	if (curl_code == CURLE_OK && http_code == 200) { /* everything is ok */
-		print(log_debug, "CURL Request succeeded with code: %i", channel()->name(), http_code);
+		print(log_debug, "CURL Request succeeded with code: %li", channel()->name(), http_code);
 		_values.clear();
 		//clear buffer-readings
 //channel()->buffer.sent = last->next;
@@ -168,14 +170,14 @@ json_object * vz::api::Volkszaehler::api_json_tuples(Buffer::Ptr buf) {
 	json_object *json_tuples = json_object_new_array();
 	Buffer::iterator it;
 
-	print(log_debug, "==> number of tuples: %d", channel()->name(), buf->size());
+	print(log_debug, "==> number of tuples: %zu", channel()->name(), buf->size());
 	uint64_t timestamp = 1;
 
 	// copy all values to local buffer queue
 	buf->lock();
 	for (it = buf->begin(); it != buf->end(); it++) {
     timestamp = round(it->tvtod() * 1000);
-    print(log_debug, "compare: %llu %llu %f", channel()->name(), _last_timestamp, timestamp, it->tvtod() * 1000);
+    print(log_debug, "compare: %" PRIu64 " %" PRIu64 " %f", channel()->name(), _last_timestamp, timestamp, it->tvtod() * 1000);
     if(_last_timestamp < timestamp ) {
       _values.push_back(*it);
       _last_timestamp = timestamp;

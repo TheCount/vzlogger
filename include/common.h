@@ -15,6 +15,8 @@
 #include <VZException.hpp>
 #include <shared_ptr.hpp>
 
+#include"util.hpp"
+
 
 /* enumerations */
 typedef enum {
@@ -34,6 +36,6 @@ typedef enum {
 #define ERR_INVALID_TYPE -3
 
 /* prototypes */
-void print(log_level_t lvl, const char *format, const char *id, ... );
+void print(log_level_t lvl, const char *format, const char *id, ... ) FORMAT_CHECK( 2, 4 );
 
 #endif /* VZ_COMMON_H_ */

@@ -197,7 +197,7 @@ void vz::api::MySmartGrid::send()
 
 /* check response */
 	if (curl_code == CURLE_OK && http_code == 200) { /* everything is ok */
-		print(log_debug, "Request succeeded with code: %i", channel()->name(), http_code);
+		print(log_debug, "Request succeeded with code: %li", channel()->name(), http_code);
 		_values.clear();
 	}
 	else { /* error */
@@ -297,7 +297,7 @@ void vz::api::MySmartGrid::_send(
 
 	/* check response */
 	if (curl_code == CURLE_OK && http_code == 200) { /* everything is ok */
-		print(log_debug, "Request succeeded with code: %i", channel()->name(), http_code);
+		print(log_debug, "Request succeeded with code: %li", channel()->name(), http_code);
 		_values.clear();
 	}
 	else { /* error */
@@ -530,7 +530,7 @@ json_object * vz::api::MySmartGrid::_json_object_measurements(Buffer::Ptr buf) {
 	for (it = _values.begin(); it != _values.end(); it++) {
 		timestamp = it->tvtod();
 		value     = it->value() * _scaler;
-		print(log_debug, "==> %ld, %lf - %ld", channel()->name(), timestamp, it->value(), value);
+		print(log_debug, "==> %ld, %f - %ld", channel()->name(), timestamp, it->value(), value);
 	}
 	if(_values.size() < 1 || (_values.size() < 2 && _first_counter==0) ) {
 		return NULL;

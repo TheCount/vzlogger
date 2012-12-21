@@ -144,7 +144,7 @@ ssize_t MeterFile::read(std::vector<Reading> &rds, size_t n) {
 	}
 
 	unsigned int i = 0;
-	print(log_debug, "MeterFile::read: %d, %d", "", rds.size(), n);
+	print(log_debug, "MeterFile::read: %lu, %zu", "", static_cast< unsigned long >( rds.size() ), n);
 	
 	while (fgets(line, 256, _fd) && i < n) {
 		char *nl;
@@ -159,7 +159,7 @@ ssize_t MeterFile::read(std::vector<Reading> &rds, size_t n) {
 	
 			print(log_debug, "MeterFile::read: '%s'", "", line);
 			int found = sscanf(line, format(), &value, string, &timestamp);
-			print(log_debug, "MeterFile::read: %f, %s, %ld", "", value, string, timestamp);
+			print(log_debug, "MeterFile::read: %f, %s, %f", "", value, string, timestamp);
 	
 
 			rds[i].value(value);

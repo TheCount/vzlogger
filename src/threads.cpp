@@ -57,7 +57,7 @@ void * reading_thread(void *arg) {
 
 	//pthread_cleanup_push(&reading_thread_cleanup, rds);
 
-	print(log_debug, "Number of readers: %d", mtr->name(), details->max_readings);
+	print(log_debug, "Number of readers: %zu", mtr->name(), details->max_readings);
 	print(log_debug, "Config.daemon: %d", mtr->name(), options.daemon());
 	print(log_debug, "Config.local: %d", mtr->name(), options.local());
 
@@ -71,7 +71,7 @@ void * reading_thread(void *arg) {
 
 			/* dumping meter output */
 			if (options.verbosity() > log_debug) {
-				print(log_debug, "Got %i new readings from meter:", mtr->name(), n);
+				print(log_debug, "Got %zu new readings from meter:", mtr->name(), n);
 
 				char identifier[MAX_IDENTIFIER_LEN];
 				for (size_t i = 0; i < n; i++) {
@@ -84,7 +84,7 @@ void * reading_thread(void *arg) {
 
 			/* update buffer length with current interval */
 			if (details->periodic == FALSE && delta > 0 && delta != mtr->interval()) {
-				print(log_debug, "Updating interval to %i", mtr->name(), delta);
+				print(log_debug, "Updating interval to %li", mtr->name(), ( long ) delta);
 				mtr->interval(delta);
 			}
 
@@ -143,7 +143,7 @@ void * reading_thread(void *arg) {
 						dump = (char*)malloc(dump_len);
 					}
 
-					print(log_debug, "Buffer dump (size=%i keep=%i): %s", (*ch)->name(),
+					print(log_debug, "Buffer dump (size=%zu keep=%zu): %s", (*ch)->name(),
 								(*ch)->size(), (*ch)->keep(), dump);
 
 					free(dump);

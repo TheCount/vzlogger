@@ -271,7 +271,7 @@ ssize_t MeterD0::read(std::vector<Reading>&rds, size_t max_readings) {
 						print(log_error, "reading binary values.", name().c_str());
 						goto error;
 					}
-					print(log_debug, "Read package with %i tuples (vendor=%s, baudrate=%c, identification=%s)",
+					print(log_debug, "Read package with %zu tuples (vendor=%s, baudrate=%c, identification=%s)",
 								name().c_str(), number_of_tuples, vendor, baudrate, identification);
 					return number_of_tuples;
 		}
