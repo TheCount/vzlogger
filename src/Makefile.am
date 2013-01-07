@@ -1,7 +1,7 @@
 AM_CFLAGS = -Wall -D_REENTRANT  $(DEPS_VZ_CFLAGS)
 #AM_CFLAGS = -Wall -D_REENTRANT  $(DEPS_VZ_CFLAGS)
 
-AM_CPPFLAGS = -I $(top_srcdir)/include -std=c++0x
+AM_CPPFLAGS = -I $(top_srcdir)/include -std=c++11
 AM_LDFLAGS =
 
 bin_PROGRAMS = vzlogger

@@ -30,6 +30,7 @@
  * along with volkszaehler.org. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include<unistd.h>
 
 #include <openssl/ssl.h>
 #include <openssl/hmac.h>
