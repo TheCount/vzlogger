@@ -48,7 +48,7 @@
 #include "threads.h"
 
 #ifdef LOCAL_SUPPORT
-#include "local.h"
+#include "local.hpp"
 #endif /* LOCAL_SUPPORT */
 
 

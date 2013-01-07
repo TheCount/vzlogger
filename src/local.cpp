@@ -30,7 +30,7 @@
 
 #include "vzlogger.h"
 #include "Channel.hpp"
-#include "local.h"
+#include "local.hpp"
 #include <MeterMap.hpp>
 #include <VZException.hpp>
 
