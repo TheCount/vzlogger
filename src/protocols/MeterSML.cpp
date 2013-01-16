@@ -104,6 +104,17 @@ MeterSML::MeterSML(std::list<Option> options)
 		print(log_error, "Failed to parse the baudrate", name().c_str());
 		throw;
 	}
+
+	/* DTR setting */
+	enableDTR_ = false;
+	try {
+		enableDTR_ = optlist.lookup_bool( options, "enableDTR" );
+	} catch ( vz::OptionNotFoundException& e ) {
+		print( log_warning, "No enableDTR option, assuming no DTR power supply", name().c_str() );
+	} catch ( vz::VZException& e ) {
+		print( log_error, "Failed to parse whether to enable DTR", name().c_str() );
+		throw;
+	}
 }
 
 MeterSML::MeterSML(const MeterSML &proto)
@@ -266,6 +277,24 @@ int MeterSML::_openDevice(struct termios *old_tio, speed_t baudrate) {
 	/* set baudrate */
 	cfsetispeed(&tio, baudrate);
 	cfsetospeed(&tio, baudrate);
+
+	/* DTR */
+	if ( enableDTR_ ) {
+		int lineBits;
+		int rc = ioctl( fd, TIOCMGET, &lineBits );
+		if ( rc != 0 ) {
+			print( log_error, "ioctl to obtain line bits failed: %s", name().c_str(), strerror( rc ) );
+		} else {
+			lineBits |= TIOCM_DTR;
+			lineBits &= ~TIOCM_RTS;
+			rc = ioctl( fd, TIOCMSET, &lineBits );
+			if ( rc != 0 ) {
+				print( log_error, "ioctl to set line bits %04X failed: %s", name().c_str(), static_cast< unsigned int >( lineBits ), strerror( rc ) );
+			} else {
+				print( log_info, "DTR power supply engaged", name().c_str() );
+			}
+		}
+	}
 
 	/* apply new configuration */
 	tcsetattr(fd, TCSANOW, &tio);

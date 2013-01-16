@@ -65,6 +65,11 @@ protected:
 	const int BUFFER_LEN;
 
 	/**
+	 * Whether to enable DTR power suppy.
+	 */
+	bool enableDTR_;
+
+	/**
 	 * Parses SML list entry and stores it in reading pointed by rd
 	 *
 	 * @param list the list entry
