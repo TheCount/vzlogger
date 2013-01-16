@@ -54,72 +54,68 @@ vz::api::MySmartGrid::MySmartGrid(
 		, _response(new vz::api::CurlResponse())
 		, _first_ts(0)
 		, _first_counter(0)
-		, _last_counter(0)
-
-{
+		, _last_counter(0) {
 	OptionList optlist;
 	print(log_debug, "===> Create MySmartGrid-API", channel()->name());
-	char url[255];
-  unsigned short curlTimeout = 30; // 30 seconds
+	std::ostringstream url;
+	unsigned short curlTimeout = 30; // 30 seconds
 
-/* parse required options */
-	try {
-		_middleware  = optlist.lookup_string(pOptions, "middleware");
-		convertUuid(optlist.lookup_string(pOptions, "secretKey"), _secretKey);
-		convertUuid(optlist.lookup_string(pOptions, "device"), _deviceId);
+	/* parse required options */
+	_middleware  = optlist.lookup_string(pOptions, "middleware");
+	convertUuid(optlist.lookup_string(pOptions, "secretKey"), _secretKey);
+	convertUuid(optlist.lookup_string(pOptions, "device"), _deviceId);
 
-		std::string channelType = optlist.lookup_string(pOptions, "type");
-		if(channelType == "device") _channelType = chn_type_device;
-		else if(channelType == "sensor") _channelType = chn_type_sensor;
-		else throw vz::VZException("Bad value for channel type.");
-
-	} catch ( vz::OptionNotFoundException &e ) {
-		throw;
-	} catch ( vz::VZException &e ) {
-		throw;
+	std::string channelType = optlist.lookup_string(pOptions, "type");
+	if(channelType == "device") {
+		_channelType = chn_type_device;
+	} else if(channelType == "sensor") { 
+		_channelType = chn_type_sensor;
+	} else {
+		throw vz::VZException("Bad value for channel type.");
 	}
-/* parse optional options */
+
+	/* parse optional options */
 	try {
 		_interval   = optlist.lookup_int(pOptions, "interval");
 	} catch ( vz::OptionNotFoundException &e ) {
 		_interval = 300;  // default time between 2 logmessages
-	} catch ( vz::VZException &e ) {
-		throw;
 	}
+
 	try {
 		_scaler   = optlist.lookup_int(pOptions, "scaler");
 	} catch ( vz::OptionNotFoundException &e ) {
 		_scaler   = 1;  // default scaling faktor
-	} catch ( vz::VZException &e ) {
-		throw;
 	}
 
 	try {
 		curlTimeout = optlist.lookup_int(pOptions, "timeout");
 	} catch ( vz::OptionNotFoundException &e ) {
-    curlTimeout = 30; // use default value instead
-  } catch ( vz::VZException &e ) {
-		throw;
+		curlTimeout = 30; // use default value instead
 	}
+
 	convertUuid(channel()->uuid());
 
 	switch(_channelType) {
 			case chn_type_device:
-				sprintf(url, "%s/device/%s", middleware().c_str(), uuid());			/* build url */
+				url << middleware() << "/device/" << uuid();
 				break;
+
 			case chn_type_sensor:
-				sprintf(url, "%s/sensor/%s", middleware().c_str(), uuid());			/* build url */
+				url << middleware() << "/sensor/" << uuid();
 				break;
+
+			default:
+				throw vz::VZException( "Unknown channel type" );
 	}
 
-	print(log_debug, "msg_api_init() %s", channel()->name(), url);
+	print(log_debug, "msg_api_init() %s", channel()->name(), url.str().c_str() );
 
 	_api_header();
 
 	curl_easy_setopt(_curlIF.handle(), CURLOPT_SSL_VERIFYPEER, 0L);
 	curl_easy_setopt(_curlIF.handle(), CURLOPT_SSL_VERIFYHOST, 0L);
 
-	curl_easy_setopt(_curlIF.handle(), CURLOPT_URL, url);
+	curl_easy_setopt(_curlIF.handle(), CURLOPT_URL, url.str().c_str() );
 
 // CurlCallback::write_callback requires CurlResponse* as data
 	curl_easy_setopt(_curlIF.handle(), CURLOPT_WRITEFUNCTION, &(vz::api::CurlCallback::write_callback));
@@ -566,18 +562,15 @@ json_object * vz::api::MySmartGrid::_json_object_measurements(Buffer::Ptr buf) {
 }
 
 void vz::api::MySmartGrid::_api_header() {
-	char agent[255];
-
 	/* prepare header */
-	sprintf(agent, "User-Agent: %s/%s (%s)", PACKAGE, VERSION, curl_version());	/* build user agent */
-
 	_curlIF.clearHeader();
 
 	_curlIF.addHeader("Content-type: application/json");
 	//_curlIF.addHeader("Accept: application/json");
-	_curlIF.addHeader(agent);
+	std::ostringstream agent;
+	agent << "User-Agent: " << PACKAGE << '/' << VERSION << " (" << curl_version() << ')';
+	_curlIF.addHeader( agent.str() );
 	_curlIF.addHeader("X-Version: 1.0");
-
 }
 
 void vz::api::MySmartGrid::hmac_sha1(
@@ -616,10 +609,5 @@ void vz::api::MySmartGrid::convertUuid(const std::string uuidIn, std::string &uu
 }
 
 void vz::api::MySmartGrid::convertUuid(const std::string uuid) {
-	std::stringstream oss;
-	for(size_t i = 0; i < uuid.length(); i++) {
-		if( uuid[i] != '-' )
-			oss<< uuid[i];
-	}
-	_uuid = oss.str();
+	convertUuid( uuid, _uuid );
 }

@@ -49,7 +49,7 @@ namespace vz {
 			typedef vz::shared_ptr<MySmartGrid> Ptr;
 
 			MySmartGrid(Channel::Ptr ch, std::list<Option> options);
-			~MySmartGrid();
+			virtual ~MySmartGrid();
 	
 			void send();
 
@@ -87,7 +87,7 @@ namespace vz {
 
 			CurlResponse *response()   { return _response.get(); }
 
-			void convertUuid(const std::string uuidIn, std::string &uuidOut);
+			static void convertUuid(const std::string uuidIn, std::string &uuidOut);
 			void convertUuid(const std::string uuid);
 			const char *uuid() const      { return _uuid.c_str(); }
 			const char *secretKey() const { return _secretKey.c_str(); }
