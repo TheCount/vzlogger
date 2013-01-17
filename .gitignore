@@ -24,12 +24,16 @@ Makefile
 Makefile.in
 .deps
 /autom4te.cache
+/compile
 /config.status
 /config.log
 /config.h
 /config.h.in
 /configure
+/depcomp
+/install-sh
 /libtool
+/missing
 stamp-h1
 
 # Debian packaging
