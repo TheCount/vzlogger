@@ -152,17 +152,6 @@ int MeterSML::close() {
 	return ::close(_fd);
 }
 
-static void dump_file( const void * buffer, size_t bytes ) {
-	char fn[64];
-
-	snprintf( fn, sizeof( fn ), "/dev/shm/sml%lu.dat", static_cast< unsigned long >( time( NULL ) ) );
-	FILE * f = fopen( fn, "wb" );
-	if ( f != nullptr ) {
-		fwrite( buffer, bytes, 1, f );
-		fclose( f );
-	}
-}
-
 ssize_t MeterSML::read(std::vector<Reading> &rds, size_t n) {
 
 	unsigned char buffer[SML_BUFFER_LEN];
@@ -174,8 +163,6 @@ ssize_t MeterSML::read(std::vector<Reading> &rds, size_t n) {
 
 	/* wait until a we receive a new datagram from the meter (blocking read) */
 	bytes = sml_transport_read(_fd, buffer, SML_BUFFER_LEN);
-
-	dump_file( buffer, bytes );
 
 	/* parse SML file & stripping escape sequences */
 	file = sml_file_parse(buffer + 8, bytes - 16);
@@ -206,8 +193,6 @@ void MeterSML::_parse(sml_list *entry, Reading *rd) {
 	//int unit = (entry->unit) ? *entry->unit : 0;
 	int scaler = (entry->scaler) ? *entry->scaler : 1;
 	
-	print( log_debug, "Raw OBIS ID: %02X %02X %02X %02X %02X %02X", name().c_str(), entry->obj_name->str[0], entry->obj_name->str[1], entry->obj_name->str[2], entry->obj_name->str[3], entry->obj_name->str[4], entry->obj_name->str[5] );
-
 	rd->value(sml_value_to_double(entry->value) * pow(10, scaler));
 
 	Obis obis((unsigned char)entry->obj_name->str[0],
